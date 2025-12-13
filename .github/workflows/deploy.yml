@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
 
     # Use GitHub Environments for protection rules and environment-specific secrets
-    environment: ${{ github.event.inputs.environment }}
+    environment: ${{ github.event.inputs.environment || 'dev' }}
 
     steps:
       - name: Checkout code
@@ -51,7 +51,7 @@ jobs:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
           DATABRICKS_USER_EMAIL: ${{ secrets.DATABRICKS_USER_EMAIL }}
-          TARGET_ENV: ${{ github.event.inputs.environment }}
+          TARGET_ENV: ${{ github.event.inputs.environment || 'dev' }}
           RUN_SETUP: ${{ github.event.inputs.setup }}
         run: |
           # Validate secrets
