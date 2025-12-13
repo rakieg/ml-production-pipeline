@@ -78,4 +78,4 @@ jobs:
       - name: Deployment summary
         if: success()
         run: |
-          echo "Successfully deployed to: ${{ github.event.inputs.environment || 'prod' }}"
+          echo "Successfully deployed to: ${{ github.event.inputs.environment }}"
